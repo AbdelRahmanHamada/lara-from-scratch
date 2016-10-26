@@ -14,6 +14,11 @@ class notesController extends Controller
       $note = new Note;
       $note->body = $request->body;
       $card->notes()->save($note);*/
+
+      $this->validate($request,[
+        'body'=>'required|min:10'
+      ]);
+
       $card->notes()->create($request->all());
       return back();
   }

@@ -20,13 +20,22 @@
          {{ csrf_field() }}
    <input type="text" name="user_id" value="1" hidden>
           <div class="form-group">
-          <textarea name="body" class="form-control"></textarea>
+          <textarea name="body" class="form-control">{{ old('body') }}</textarea>
           </div>
 
            <div class="form-group">
             <button type="submit" class="btn btn-primary">Add Note</button>
             </div>
    </form>
+
+    @if(count($errors))
+        <div class="alert alert-danger"><ul>
+           @foreach($errors->all() as $error)
+                   <li> {{ $error }} </li>
+           @endforeach
+        </ul></div>
+    @endif
+
 </div>
 </div>
 @endsection
