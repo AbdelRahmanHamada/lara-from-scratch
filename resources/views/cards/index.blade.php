@@ -1,14 +1,22 @@
 @extends('layout')
 @section('content')
 
-<h1>All Cards</h1>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Cards List</div>
 
-@foreach($cards as $card)
+                <div class="panel-body">
 
-<div>
-  <a href="/cards/{{ $card->id }}"> {{ $card->title }} </a>
-</div>
+                    @foreach($cards as $card)
+                        <div>
+                            <a href="/cards/{{ $card->id }}"> {{ $card->title }} </a>
+                        </div>
+                    @endforeach
 
-@endforeach
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
