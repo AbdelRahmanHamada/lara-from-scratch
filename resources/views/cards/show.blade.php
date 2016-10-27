@@ -30,6 +30,12 @@
                 </div>
             </form>
 
+            @if(Session::has('status'))
+                <div class="alert alert-success">
+                  <h4><span class="glyphicon glyphicon-ok"></span> {{ Session::get('status') }}</h4>
+                 </div>
+            @endif
+
             @if(count($errors))
                 <div class="alert alert-danger">
                     <ul>

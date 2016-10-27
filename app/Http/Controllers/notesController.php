@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Card;
 use App\Note;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class notesController extends Controller
 {
@@ -26,7 +27,10 @@ class notesController extends Controller
         $note = new Note;
         $note->body = $request->body;
         $note->user_id = Auth::user()->id;
-        $card->notes()->save($note);
+        if($card->notes()->save($note)){
+            Session::flash('status','Added Successful');
+        }
+
 
         return back();
     }
